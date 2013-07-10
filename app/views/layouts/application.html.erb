@@ -20,7 +20,9 @@
           <%end%>
         <%end%>
       </div>
-      <p> This page has been visited <%= pluralize(@count,"Time") %>  
+      <% if (not session[:counter].nil? and session[:counter] > 5) %> 
+        <p> This page has been visited <%= pluralize(session[:counter],"time")%> </p>
+      <%end%>
       <p> Time: <%= @time = Time.now %><br/><br/> </p>
       <a href="http://www....">Home</a><br/>
       <a href="http://www.../faq">Questions</a><br/>
