@@ -24,10 +24,12 @@
         <p> This page has been visited <%= pluralize(session[:counter],"time")%> </p>
       <%end%>
       <p> Time: <%= @time = Time.now %><br/><br/> </p>
-      <a href="http://www....">Home</a><br/>
-      <a href="http://www.../faq">Questions</a><br/>
+      <a href="/">Home</a><br/>
+      <a href="/">Questions</a><br/>
       <a href="http://www..../news">News</a><br/>
       <a href="http://www..../contact">Contact</a><br/>
+
+      <a href="/orders">Orders</a></br>
     </div>
     <div id="main">
       <%= yield %>
