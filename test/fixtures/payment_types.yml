@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  pay_type: MyString
+  pay_type: "Check"
 
 two:
-  pay_type: MyString
+  pay_type: "Purchase Order"
+
+three:
+  pay_type: "Credit Card"
