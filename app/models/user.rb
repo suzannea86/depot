@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   
   validate :password_must_be_present
 
+  after_destroy :ensure_an_admin_remains
       
   def User.encrypt_password(password, salt)
     Digest::SHA2.hexdigest(password + "wibble" + salt)
@@ -44,4 +45,10 @@ class User < ActiveRecord::Base
     def generate_salt
       self.salt = self.object_id.to_s + rand.to_s
     end    
+
+    def ensure_an_admin_remains
+      if User.count.zero?
+        raise "Cant delete last user"
+      end
+    end
 end
