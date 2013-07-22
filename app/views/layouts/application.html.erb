@@ -4,12 +4,12 @@
   <title>Pragprog Books Online Store </title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tag %>
 </head>
 <body id="store">
   <div id="banner">
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf"%>
+    <%= @page_title || t('.title')%>
   </div>
   <div id="columns">
     <div id="side">
@@ -23,13 +23,14 @@
       <% if (not session[:counter].nil? and session[:counter] > 5) %> 
         <p> This page has been visited <%= pluralize(session[:counter],"time")%> </p>
       <%end%>
+      
       <p> Time: <%= @time = Time.now %><br/><br/> </p>
-      <a href="/">Home</a><br/>
-      <a href="/">Questions</a><br/>
-      <a href="http://www..../news">News</a><br/>
-      <a href="http://www..../contact">Contact</a><br/>
+      <a href="http://www...."><%= t('.home') %></a><br/>
+      <a href="http://www..../faq"><%= t('.questions') %></a><br/>
+      <a href="http://www..../news"> <%= t('.news') %></a><br/>
+      <a href="http://www..../contact"><%= t('.contact') %></a><br/>
 
-      <% if session[:user_id] %>
+      <% if session[:user_id] %> 
         <br/>
         <a href="/orders">Orders</a><br/>
         <%= link_to 'Products', products_path %><br/>
