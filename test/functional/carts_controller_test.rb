@@ -47,4 +47,13 @@ class CartsControllerTest < ActionController::TestCase
 
     assert_redirected_to store_path
   end
+
+  test "should empty cart" do
+    assert_equal(0, Cart.count) do
+      @cart = carts(:one)
+      @cart.destroy
+      session[:cart_id] = nil
+      puts Cart.count
+    end
+  end
 end

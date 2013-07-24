@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
+<div class="field">
+  <%= f.label :ship_date, t('.ship_date') %><br />
+  <%= f.text_field :ship_date, :size => 40 %>
+</div>
+
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>

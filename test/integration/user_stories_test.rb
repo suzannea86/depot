@@ -8,7 +8,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		Order.delete_all
 		ruby_book = products(:ruby)
 	
-		puts "product"
 		get "/"
 		assert_response :success
 		assert_template "index"
@@ -16,12 +15,10 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		xml_http_request :post, '/line_items', :product_id => ruby_book.id
 		assert_response :success
 
-		puts "cart"
 		cart = Cart.find(session[:cart_id])
 		assert_equal 1, cart.line_items.size
 		assert_equal ruby_book, cart.line_items[0].product
 
-		puts "order"
 		get "/orders/new"
 		assert_response :success
 		assert_template "new"
@@ -34,20 +31,14 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 						  			}
 		assert_response :success
 		assert_template "index"
-
-		puts "after order"
 		
 		cart = Cart.find(session[:cart_id])
 		assert_equal 0, cart.line_items.size
 
-		puts "order check"
 		orders = Order.find(:all)
-		p orders
-		puts orders
 		assert_equal 1, orders.size
 		order = orders[0]
 
-		puts "sssf"
 		assert_equal "Dave Thomas", order.name
 		assert_equal "123 The Street", order.address
 		assert_equal "dave@example.com", order.email
@@ -62,6 +53,5 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal 'Marilyn <marilyn.aseer@gmail.com>' , mail[:from].value
 		assert_equal "Pragmatic Store Order Confirmation" , mail.subject
 
-		puts "end"
 	end
 end

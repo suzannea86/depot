@@ -80,7 +80,15 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find(params[:id])
     @cart = @line_item.cart
-    @line_item.destroy
+
+    if @line_item.quantity == 1
+      @line_item.destroy
+    else
+      @line_item.quantity -= 1
+      @line_item.save
+      #new_quantity = @line_item.quantity - 1
+      #@line_item.update_attributes(quantity: new_quantity)
+    end
 
     respond_to do |format|
       format.html { redirect_to line_items_url }
