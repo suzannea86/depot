@@ -24,4 +24,10 @@ class Notifier < ActionMailer::Base
     mail :to => order.email, :subject => 'Pragmatic Store Order Shipped'
 
   end
+
+  def error_occured(error)
+    @greeting = "Hi Admin"
+    @error = error
+    mail :to => order.email, :subject => 'An Error has occurred'
+  end
 end
