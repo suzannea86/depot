@@ -37,8 +37,8 @@ class ApplicationController < ActionController::Base
           end
         else
           authenticate_or_request_with_http_basic do |username, password|
-          user =User.find_by_name(username)
-          user && user.authenticate(password)
+            user = User.authenticate(username, password)
+            not user.nil?
           end
         end  
     end

@@ -33,6 +33,7 @@ class ProductsControllerTest < ActionController::TestCase
   test "should show product" do
     get :show, id: @product
     assert_response :success
+    assert_select "#product_title", "Mystring"
   end
 
   test "should get edit" do
