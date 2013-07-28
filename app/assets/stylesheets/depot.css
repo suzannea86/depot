@@ -21,7 +21,7 @@
 
 #banner {
   background: #9c9;
-  padding-top: 12px;
+  padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif; color: #282;
@@ -37,9 +37,9 @@
 }
 
 #main {
-  margin-left: 22em;
-  padding-top: 4ex;
-  padding-left: 2em;
+  margin-left: 24em;
+  padding-top: 7ex;
+  padding-left: 3em;
   background: white;
 }
 

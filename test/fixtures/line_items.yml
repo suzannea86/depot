@@ -5,5 +5,5 @@ one:
   order: one
 
 two:
-  product: ruby
+  product: rails
   cart: one
