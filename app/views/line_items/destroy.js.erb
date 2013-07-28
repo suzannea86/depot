@@ -1,1 +1,5 @@
+<% if @cart.line_items.empty? %>
+  $('#cart').hide("blind", {direction: "vertical"}, 1000);
+<% end %>
+
 $('#cart').html("<%=j render @cart %>");

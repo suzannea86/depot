@@ -3,7 +3,9 @@
 one:
   product: ruby
   order: one
+  price: 2
 
 two:
-  product: rails
+  product: one
   cart: one
+  price: 3

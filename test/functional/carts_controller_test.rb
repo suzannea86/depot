@@ -49,12 +49,7 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should empty cart" do
-    skip
-    assert_equal(0, Cart.count) do
-      @cart = carts(:one)
-      @cart.destroy
-      session[:cart_id] = nil
-      puts Cart.count
-    end
+    delete :destroy, id: @cart
+    assert session[:cart_id].nil?  
   end
 end
