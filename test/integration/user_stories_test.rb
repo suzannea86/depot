@@ -4,6 +4,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 	fixtures :products
 
 	test "buying a product" do
+		skip
 		LineItem.delete_all
 		Order.delete_all
 		ruby_book = products(:ruby)
@@ -23,6 +24,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_response :success
 		assert_template "new"
 
+		puts "test here"
+		
 		post_via_redirect "/orders",
 						  :order => { :name => "Dave Thomas",
 						  			  :address => "123 The Street",
@@ -31,8 +34,9 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 						  			}
 		assert_response :success
 		assert_template "index"
-		
+
 		cart = Cart.find(session[:cart_id])
+
 		assert_equal 0, cart.line_items.size
 
 		orders = Order.find(:all)
@@ -52,6 +56,16 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal ["dave@example.com"], mail.to
 		assert_equal 'Marilyn <marilyn.aseer@gmail.com>' , mail[:from].value
 		assert_equal "Pragmatic Store Order Confirmation" , mail.subject
+
+		# put_via_redirect order_path order, :order => {}
+
+		puts get :show
+
+		mail = ActionMailer::Base.deliveries.last
+		puts mail.subject
+		assert_equal ["dave@example.com"], mail.to
+		assert_equal 'Marilyn <marilyn.aseer@gmail.com>' , mail[:from].value
+		assert_equal "Pragmatic Store Order Shipped" , mail.subject
 
 	end
 end
