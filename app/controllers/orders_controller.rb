@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       params[:order] = Hash.new if params[:order].nil?
-      params[:order][:ship_date] = Date.today.to_s
+      params[:order][:ship_date] = Date.today
 
       if @order.update_attributes(params[:order])        
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }

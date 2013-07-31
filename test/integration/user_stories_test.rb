@@ -5,12 +5,11 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
 	test "buying a product" do
 
-		post_via_redirect login_path, {:name => users(:one).name, :password => "secret"}
-
+		post_via_redirect login_path, {:name => users(:one).name, :password => 'secret'}
 		LineItem.delete_all
 		Order.delete_all
 		ruby_book = products(:ruby)
-	
+
 		get "/"
 		assert_response :success
 		assert_template "index"
@@ -25,6 +24,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		get "/orders/new"
 		assert_response :success
 		assert_template "new"
+
+		puts "test here"
 		
 		post_via_redirect "/orders",
 						  :order => { :name => "Dave Thomas",
@@ -41,12 +42,13 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
 		orders = Order.find(:all)
 		assert_equal 1, orders.size
-		order = orders[0]
+		order = orders[0] 
 
 		assert_equal "Dave Thomas", order.name
 		assert_equal "123 The Street", order.address
 		assert_equal "dave@example.com", order.email
 		assert_equal "Check", order.pay_type
+
 
 		assert_equal 1,order.line_items.size
 		line_item = order.line_items[0]
@@ -58,13 +60,14 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal "Pragmatic Store Order Confirmation" , mail.subject
 
 		put_via_redirect order_path order, :order => {}
-		assert_response :success
 
 		ship_date_expected = Date.today
 		order = Order.find(order.id)
 		assert_equal ship_date_expected, order.ship_date
 
+
 		mail = ActionMailer::Base.deliveries.last
+		puts mail.subject
 		assert_equal ["dave@example.com"], mail.to
 		assert_equal 'Marilyn <marilyn.aseer@gmail.com>' , mail[:from].value
 		assert_equal "Pragmatic Store Order Shipped" , mail.subject

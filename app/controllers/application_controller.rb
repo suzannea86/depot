@@ -31,16 +31,17 @@ class ApplicationController < ActionController::Base
     end    
 
     def authorize
-        if request.format == Mime::HTML
-          unless User.find_by_id(session[:user_id])
-            redirect_to login_url, :notice => "Please log in"
-          end
-        else
-          authenticate_or_request_with_http_basic do |username, password|
-            user = User.authenticate(username, password)
-            not user.nil?
-          end
-        end  
+      return if User.count.zero?
+       if request.format == Mime::HTML
+        unless User.find_by_id(session[:user_id]) 
+          redirect_to login_url, :notice => "Please log in"
+        end
+      else
+        authenticate_or_request_with_http_basic do |username, password|
+        user = User.authenticate(username, password)
+        not user.nil?
+        end
+      end  
     end
 
 end
