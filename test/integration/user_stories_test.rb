@@ -68,6 +68,23 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal ["dave@example.com"], mail.to
 		assert_equal 'Marilyn <marilyn.aseer@gmail.com>' , mail[:from].value
 		assert_equal "Pragmatic Store Order Shipped" , mail.subject
-
 	end
+
+	test "after logout the sensitive data cannot be accessed" do
+
+    post_via_redirect login_path, {:name => users(:one).name, :password => 'secret'}
+
+    get "/orders"
+    assert_response :success
+
+    delete "/logout"
+    assert_response :redirect
+    assert_template "/"
+
+    get "/orders"
+    assert_response :redirect
+    #follow_redirect!  
+    #assert_equal '/login', path 
+    assert_redirected_to login_url  
+  end
 end

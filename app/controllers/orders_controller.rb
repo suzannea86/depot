@@ -22,11 +22,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def translate_pay_types
+    pay_type_hash = {}
+    PaymentType.pay_types.map{|pay_type| pay_type_hash[I18n.translate(pay_type)] = pay_type}
+    pay_type_hash
+  end
+
   # GET /orders/new
   # GET /orders/new.json
   def new
     @disable_checkout = true
     @cart = current_cart
+    @pay_type = translate_pay_types
     if @cart.line_items.empty?
       redirect_to(store_url, :notice => "Your cart is empty")
       return
@@ -43,6 +50,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
+    @pay_type = translate_pay_types
   end
 
   # POST /orders
@@ -59,6 +67,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to(store_url, :notice => I18n.t('.thanks')) }
         format.json { render json: @order, status: :created, location: @order }
       else
+        @pay_type = translate_pay_types
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -79,6 +88,7 @@ class OrdersController < ApplicationController
         format.json { head :no_content }
         Notifier.order_shipped(@order).deliver
       else
+        @pay_type = translate_pay_types
         format.html { render action: "edit" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end

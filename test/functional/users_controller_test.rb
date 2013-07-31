@@ -40,8 +40,10 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do 
+    @input_attributes[:current_password] = "secret"
+    @input_attributes[:name] = "dave"
     put :update, id: @user.to_param, user: @input_attributes
-         assert_redirected_to users_path
+    assert_redirected_to users_path
   end
 
   test "should destroy user" do

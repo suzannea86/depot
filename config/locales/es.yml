@@ -1,5 +1,7 @@
 es:
-
+  Check: "Check-Spanish"
+  Credit Card: "Credit Card-Spanish"
+  Purchase Order: "Purchase Order-Spanish"
   layouts:
     application:
       title:      "Publicaciones de Pragmatic"
@@ -61,4 +63,4 @@ es:
         one: "1 error ha impedido que este %{model} se guarde"
         other: "%{count} errores han impedido que este %{model} se guarde"
 
-    thanks: "Gracias por su pedido"
+  thanks: "Gracias por su pedido"

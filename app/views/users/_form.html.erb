@@ -22,7 +22,14 @@
   </div>
 
   <div>
-    <%= f.label :password, 'Password' %><br />:
+    <% if params[:action] == "edit" || params[:action] == "update" %>
+      <%= f.label :current_password, 'Current Password' %></br>:
+      <%= f.password_field :current_password, :size => 40 %>
+    <%end%>
+  </div>
+
+  <div>
+    <%= f.label :password, 'Password' %>:
     <%= f.password_field :password, :size => 40 %>
   </div>
 
