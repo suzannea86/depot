@@ -1,2 +1,7 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+This application implements an online store, with a catalog, cart and orders.
+
+It is divided into two main sections:
+
+The buyer's side of the application manages the catalog, cart and checkout. Its implementation spans in four models and associated controllers and views: Cart, LineItem, Order and Product. Additionally, there is a StoreController for the store front itself and a SessionController to manage sessions.
+
+Only administrators can access stuff in the seller's side(product maintainenece and order fulfilment). This is implemened by the LoginController, is enforced by the ApplicationController#authorize method, and assisted by the Users and Carts resources.
