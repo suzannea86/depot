@@ -430,7 +430,7 @@
             <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">translate_pay_types</span>
   <span class="ruby-identifier">pay_type_hash</span> = {}
-  <span class="ruby-constant">PaymentType</span>.<span class="ruby-identifier">pay_types</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">pay_type</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pay_type_hash</span>[<span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span>(<span class="ruby-identifier">pay_type</span>)] = <span class="ruby-identifier">pay_type</span>}
+  <span class="ruby-constant">Order</span><span class="ruby-operator">::</span><span class="ruby-constant">PAYMENT_TYPES</span>.<span class="ruby-identifier">each</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">pay_type</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pay_type_hash</span>[<span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span>(<span class="ruby-identifier">pay_type</span>)] = <span class="ruby-identifier">pay_type</span>}
   <span class="ruby-identifier">pay_type_hash</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- translate_pay_types-source -->

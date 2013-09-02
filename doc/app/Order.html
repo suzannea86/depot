@@ -163,6 +163,19 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="PAYMENT_TYPES">PAYMENT_TYPES
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -188,7 +201,7 @@
 
           
           <div class="method-source-code" id="add_line_items_from_cart-source">
-            <pre><span class="ruby-comment"># File app/models/order.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_line_items_from_cart</span>(<span class="ruby-identifier">cart</span>)
       <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">line_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
               <span class="ruby-identifier">item</span>.<span class="ruby-identifier">cart_id</span> = <span class="ruby-keyword">nil</span>

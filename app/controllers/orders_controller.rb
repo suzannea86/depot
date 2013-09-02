@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
   def translate_pay_types
     pay_type_hash = {}
-    PaymentType.pay_types.map{|pay_type| pay_type_hash[I18n.translate(pay_type)] = pay_type}
+    Order::PAYMENT_TYPES.each.map{|pay_type| pay_type_hash[I18n.translate(pay_type)] = pay_type}
     pay_type_hash
   end
 
