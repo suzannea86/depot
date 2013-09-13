@@ -26,9 +26,6 @@
       <% if (not session[:counter].nil? and session[:counter] > 5) %> 
         <p> This page has been visited <%= pluralize(session[:counter],"time")%> </p>
       <%end%>
-      
-      <p> Time: <%= @time = Time.now %><br/><br/> </p>
-      <a href="/"><%= t('.home') %></a><br/>
 
       <% if session[:user_id] %> 
         <br/>
