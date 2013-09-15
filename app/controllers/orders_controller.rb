@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        Notifier.order_received(@order).deliver
+       # Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice => I18n.t('.thanks')) }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
       if @order.update_attributes(params[:order])        
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
-        Notifier.order_shipped(@order).deliver
+     #   Notifier.order_shipped(@order).deliver
       else
         @pay_type = translate_pay_types
         format.html { render action: "edit" }
