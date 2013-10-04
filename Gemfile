@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
-
+ruby "1.9.3"
 gem 'rails', '3.2.13'
 ruby '2.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+<<<<<<< HEAD
 gem 'rails_12factor', group: :production
+=======
+>>>>>>> 30cd2441251b4db6409ccb057d173f50bbbd5de2
 
 gem 'therubyracer'
 # Gems used only for assets and not required
@@ -27,11 +30,15 @@ gem 'jquery-ui-rails'
 
 gem 'will_paginate', '>= 3.0.pre'
 
+<<<<<<< HEAD
 group :production do
   gem 'mysql'
 end
 #Deploy with Capistrano
 gem 'capistrano'  
+=======
+gem 'RedCloth'
+>>>>>>> 30cd2441251b4db6409ccb057d173f50bbbd5de2
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

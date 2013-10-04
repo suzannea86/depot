@@ -27,11 +27,7 @@
         <p> This page has been visited <%= pluralize(session[:counter],"time")%> </p>
       <%end%>
       
-      <p> Time: <%= @time = Time.now %><br/><br/> </p>
       <a href="/"><%= t('.home') %></a><br/>
-      <a href="http://www..../faq"><%= t('.questions') %></a><br/>
-      <a href="http://www..../news"> <%= t('.news') %></a><br/>
-      <a href="http://www..../contact"><%= t('.contact') %></a><br/>
 
       <% if session[:user_id] %> 
         <br/>
