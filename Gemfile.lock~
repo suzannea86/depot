@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    RedCloth (4.2.9)
+    RedCloth (4.2.9-x86-mingw32)
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
       mail (~> 2.5.3)
@@ -63,6 +65,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.7)
+<<<<<<< HEAD
     mysql (2.9.1)
     mysql (2.9.1-x86-mingw32)
     net-scp (1.1.2)
@@ -73,6 +76,11 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     pg (0.17.0)
+    pg (0.17.0-x86-mingw32)
+=======
+    pg (0.16.0)
+    pg (0.16.0-x86-mingw32)
+>>>>>>> 30cd2441251b4db6409ccb057d173f50bbbd5de2
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -134,11 +142,18 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+<<<<<<< HEAD
   capistrano
   coffee-rails (~> 3.2.1)
   jquery-rails
   jquery-ui-rails
   mysql
+=======
+  RedCloth
+  coffee-rails (~> 3.2.1)
+  jquery-rails
+  jquery-ui-rails
+>>>>>>> 30cd2441251b4db6409ccb057d173f50bbbd5de2
   pg
   rails (= 3.2.13)
   rails_12factor
